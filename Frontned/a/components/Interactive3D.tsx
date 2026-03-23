@@ -11,7 +11,8 @@ function ParticleField({ count = 2500 }) {
   const { resolvedTheme } = useTheme();
 
   const isDark = resolvedTheme === "dark";
-  const particleColor = isDark ? "#3b82f6" : "#2563eb";
+  const particleOpacity = isDark ? 0.7 : 0.25;
+  const particleColor = isDark ? "#3b82f6" : "#93c5fd"; // Softer blue for light mode
 
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
@@ -81,7 +82,7 @@ function ParticleField({ count = 2500 }) {
         <meshStandardMaterial 
           color={particleColor} 
           transparent 
-          opacity={isDark ? 0.7 : 0.9} 
+          opacity={particleOpacity} 
           roughness={0.6} 
         />
       </instancedMesh>
@@ -92,15 +93,13 @@ function ParticleField({ count = 2500 }) {
 export default function Interactive3D() {
   return (
     <div style={{ 
+      position: "absolute", 
+      inset: 0,
       width: "100%", 
-      height: "480px", 
-      position: "relative",
+      height: "100%",
       background: "transparent",
       overflow: "hidden",
-      borderTop: "1px solid var(--bg-secondary)",
-      borderBottom: "1px solid var(--bg-secondary)",
-      margin: "40px 0",
-      backgroundColor: "var(--bg-primary)"
+      zIndex: 0
     }}>
       {/* Soft gradient accent lighting behind the 3D scene */}
       <div style={{
@@ -116,18 +115,6 @@ export default function Interactive3D() {
           <ambientLight intensity={0.4} />
           <ParticleField count={3000} />
         </Canvas>
-      </div>
-      
-      {/* Decorative overlay text */}
-      <div style={{
-          position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-          pointerEvents: "none", zIndex: 2, textAlign: "center",
-          background: "var(--bg-nav)", padding: "20px 32px",
-          borderRadius: "24px", border: "1px solid var(--border-subtle)",
-          backdropFilter: "blur(12px)"
-      }}>
-          <h2 style={{ fontSize: "24px", fontWeight: 700, margin: "0 0 6px 0", letterSpacing: "-0.03em" }}>Interactive Intelligence</h2>
-          <p style={{ fontSize: "13px", color: "var(--text-muted)", margin: 0 }}>Hover the grid array to see it react physically to your mouse map.</p>
       </div>
     </div>
   );

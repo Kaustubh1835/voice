@@ -110,10 +110,14 @@ export default function LandingPage() {
         </div>
       </motion.nav>
 
-      {/* ─── Hero ─── */}
-      <section style={{ padding: "80px 40px 60px", maxWidth: "1100px", margin: "0 auto" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "60px" }}>
-          <div style={{ flex: 1 }}>
+      {/* ─── Hero & 3D Background ─── */}
+      <section style={{ position: "relative", width: "100%", overflow: "hidden" }}>
+        {/* Interactive 3D Background */}
+        <Interactive3D />
+        
+        <div style={{ position: "relative", zIndex: 1, padding: "80px 40px 120px", maxWidth: "1100px", margin: "0 auto", pointerEvents: "none" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "60px" }}>
+            <div style={{ flex: 1, pointerEvents: "auto" }}>
             <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
               <span style={{
                 display: "inline-block", padding: "6px 14px", background: "var(--bg-secondary)",
@@ -180,11 +184,9 @@ export default function LandingPage() {
               priority
             />
           </motion.div>
+          </div>
         </div>
       </section>
-
-      {/* ─── Interactive 3D ─── */}
-      <Interactive3D />
 
       {/* ─── Features ─── */}
       <section style={{ padding: "60px 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
