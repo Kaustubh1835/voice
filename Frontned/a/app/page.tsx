@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
+import Interactive3D from "@/components/Interactive3D";
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
@@ -181,6 +182,9 @@ export default function LandingPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* ─── Interactive 3D ─── */}
+      <Interactive3D />
 
       {/* ─── Features ─── */}
       <section style={{ padding: "60px 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
