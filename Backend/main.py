@@ -14,6 +14,7 @@ from openai import AsyncOpenAI
 load_dotenv()
 API_KEY = os.getenv("ASSEMBLYAI_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
 if not API_KEY or not OPENAI_API_KEY:
     print("❌ Missing API keys in .env file.")
@@ -23,9 +24,12 @@ client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
 app = FastAPI()
 
+# Split by comma to support multiple frontend URLs in production if needed
+origins = [url.strip() for url in FRONTEND_URL.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
