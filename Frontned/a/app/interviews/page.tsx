@@ -103,7 +103,7 @@ export default function InterviewsPage() {
         }}
       >
         <button
-          onClick={() => router.push("/dashboard")}
+          onClick={() => router.push("/")}
           style={{
             display: "flex", alignItems: "center", gap: "8px", background: "none", border: "none",
             color: "var(--text-muted)", fontSize: "13px", cursor: "pointer", padding: 0, transition: "color 0.2s",

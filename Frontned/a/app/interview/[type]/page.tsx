@@ -129,7 +129,7 @@ export default function InterviewPage() {
     };
   }, [status]);
 
-  const endInterview = () => { if (wsRef.current) wsRef.current.close(); router.push("/dashboard"); };
+  const endInterview = () => { if (wsRef.current) wsRef.current.close(); router.push("/"); };
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return "#10b981";
@@ -200,7 +200,7 @@ export default function InterviewPage() {
 
           <motion.button
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-            onClick={() => router.push("/dashboard")}
+            onClick={() => router.push("/")}
             style={{
               padding: "14px 32px", background: "#3b82f6", color: "white", border: "none",
               borderRadius: "10px", fontSize: "14px", fontWeight: 600, cursor: "pointer",
