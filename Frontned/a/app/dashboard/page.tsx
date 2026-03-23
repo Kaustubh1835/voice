@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
@@ -16,7 +16,7 @@ const fadeUp = {
   }),
 };
 
-const scaleIn = {
+const scaleIn: any = {
   hidden: { opacity: 0, scale: 0.92 },
   visible: (i: number) => ({
     opacity: 1,
